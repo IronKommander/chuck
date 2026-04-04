@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import json
+import tempfile
 import unittest
 from pathlib import Path
 
+from chuck import regression
 from chuck.regression import DEFAULT_REGRESSION_PATH, generate_regression_file, run_regression
 from chuck.tasks import TASKS
 
@@ -31,18 +33,29 @@ class RegressionTests(unittest.TestCase):
             self.assertTrue((repo_root / "chuck" / "benchmarks" / task_name).exists())
 
     def test_baseline_generation_and_match(self) -> None:
-        path = generate_regression_file(DEFAULT_REGRESSION_PATH)
-        self.assertTrue(path.exists())
-        repo_root = Path(path).resolve().parents[1]
+        original_dir = regression.DEFAULT_REGRESSION_DIR
+        original_path = regression.DEFAULT_REGRESSION_PATH
+        try:
+            repo_root = Path(__file__).resolve().parents[1]
+            with tempfile.TemporaryDirectory(dir=repo_root) as temp_dir:
+                temp_root = Path(temp_dir)
+                regression.DEFAULT_REGRESSION_DIR = temp_root
+                regression.DEFAULT_REGRESSION_PATH = temp_root / "regression.json"
+                path = generate_regression_file(regression.DEFAULT_REGRESSION_PATH)
+                self.assertTrue(path.exists())
+                manifest_root = Path(path).resolve().parents[1]
 
-        entries = json.loads(Path(path).read_text(encoding="utf-8"))
-        self.assertEqual(len(entries), 10)
+                entries = json.loads(Path(path).read_text(encoding="utf-8"))
+                self.assertEqual(len(entries), 10)
 
-        for entry in entries:
-            self.assertTrue((repo_root / entry["path"]).exists())
+                for entry in entries:
+                    self.assertTrue((manifest_root / entry["path"]).exists())
 
-        results = run_regression(path)
-        self.assertTrue(all(result["passed"] for result in results))
+                results = run_regression(path)
+                self.assertTrue(all(result["passed"] for result in results))
+        finally:
+            regression.DEFAULT_REGRESSION_DIR = original_dir
+            regression.DEFAULT_REGRESSION_PATH = original_path
 
 
 if __name__ == "__main__":

@@ -5,7 +5,7 @@
 </p>
 
 `chuck` is a computational utility that solves 10 high-value data and algorithm tasks.
-Benchmarks and regression checks are included to measure how fast each capability is, but solving tasks is the primary purpose.
+Benchmarks and regression checks are included to measure how fast each capability is, and where the bottleneck occurs.
 
 ## Installation
 
@@ -13,16 +13,12 @@ For a quick setup, see [docs/INSTALLATION.md](docs/INSTALLATION.md).
 
 ---
 
-## Project direction
+## Project overview
 
-This project is intentionally **performance-first**:
-
-- we optimize average-case throughput and latency
-- we allow controlled reliability trade-offs where they improve speed
-- we use probabilistic methods where exactness is expensive and confidence is acceptable
-- we keep deterministic input generation so behavior remains testable and comparable
-
-In short: this is a **solver toolkit with measurable performance**, not a benchmark-only repo.
+- built as a toolkit for 10 important compute/data tasks
+- main focus is solving workloads fast
+- prefers throughput and latency, and uses probabilistic methods where the speed gain is worth the trade-off from reliability
+- keeps generators deterministic so outputs stay testable and snapshot/regression comparisons remain meaningful
 
 ---
 
