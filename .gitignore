@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+native/cpp/build/
+
+# OS/editor noise
+.DS_Store
+.idea/
+.vscode/
+
+# Generated benchmark/snapshot data
+data/reports/snapshots/
+data/**/snapshots/
