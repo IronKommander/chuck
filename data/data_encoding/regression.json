@@ -1,0 +1,15 @@
+[
+  {
+    "expected": {
+      "backend": "python",
+      "compressed_bytes": 5388,
+      "input_bytes": 8192,
+      "ratio": 0.6577,
+      "roundtrip": true,
+      "sha256": "9937957b8c18ae7965f7ecf6fd355064db5a8d6ea251719f602f49d2817f0631"
+    },
+    "seed": 4,
+    "size": 8192,
+    "task": "data_encoding"
+  }
+]

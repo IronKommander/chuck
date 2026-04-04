@@ -1,0 +1,15 @@
+[
+  {
+    "expected": {
+      "backend": "python",
+      "checksum": 795494423,
+      "count": 128,
+      "max": 991026,
+      "median": 102583,
+      "min": -949966
+    },
+    "seed": 2,
+    "size": 128,
+    "task": "ordering_core"
+  }
+]

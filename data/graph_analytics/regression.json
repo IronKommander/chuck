@@ -1,0 +1,14 @@
+[
+  {
+    "expected": {
+      "backend": "python",
+      "checksum": 23.048914,
+      "node_count": 48,
+      "top_node": "n0010",
+      "top_score": 0.051786
+    },
+    "seed": 5,
+    "size": 48,
+    "task": "graph_analytics"
+  }
+]

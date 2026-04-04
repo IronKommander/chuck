@@ -1,0 +1,13 @@
+[
+  {
+    "expected": {
+      "backend": "python",
+      "checksum": 76643,
+      "size": 16,
+      "trace": 4787
+    },
+    "seed": 9,
+    "size": 16,
+    "task": "compute_core"
+  }
+]

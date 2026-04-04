@@ -1,0 +1,16 @@
+[
+  {
+    "expected": {
+      "backend": "python",
+      "candidates": 128,
+      "checksum": 28615758,
+      "confidence": 0.9961,
+      "prime_density_estimate": 0.125,
+      "probabilistic": true,
+      "probable_primes": 16
+    },
+    "seed": 6,
+    "size": 128,
+    "task": "prime_analytics"
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "expected": {
+      "backend": "python",
+      "final_keys": [
+        12,
+        7,
+        31,
+        3,
+        10,
+        13,
+        18,
+        1,
+        8,
+        15,
+        11,
+        25
+      ],
+      "hit_rate": 0.3672,
+      "hits": 47,
+      "misses": 81,
+      "requests": 128
+    },
+    "seed": 7,
+    "size": 128,
+    "task": "memory_tier"
+  }
+]

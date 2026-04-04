@@ -1,0 +1,15 @@
+[
+  {
+    "expected": {
+      "backend": "python",
+      "records": 64,
+      "top_pair": "acct_003|bucket_03",
+      "top_value": 3220,
+      "total_value": 33802,
+      "unique_pairs": 33
+    },
+    "seed": 1,
+    "size": 64,
+    "task": "io_pipeline"
+  }
+]

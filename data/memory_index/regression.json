@@ -1,0 +1,18 @@
+[
+  {
+    "expected": {
+      "backend": "python",
+      "confidence": 1.0,
+      "false_positive_rate": 0.0,
+      "false_positives": 0,
+      "items": 128,
+      "positives": 64,
+      "probabilistic": true,
+      "probes": 192,
+      "true_positives": 64
+    },
+    "seed": 8,
+    "size": 128,
+    "task": "memory_index"
+  }
+]

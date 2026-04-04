@@ -1,0 +1,14 @@
+[
+  {
+    "expected": {
+      "aggregate": 276559,
+      "backend": "python",
+      "join_rows": 269,
+      "left_rows": 128,
+      "right_rows": 64
+    },
+    "seed": 10,
+    "size": 128,
+    "task": "relational_fusion"
+  }
+]
