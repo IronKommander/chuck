@@ -1,9 +1,6 @@
 # graph_analytics: Examples & Usage
 
 This benchmark simulates a PageRank algorithm on a randomly generated directed graph.
-- First, a directed graph with no isolated nodes is generated.
-- Then, nodes are ranked based on how many other nodes are linked to it through exactly 16 iterations.
-- Then, metadata like checksum is calculated and the `top_node` is identified.
 
 ## CLI Benchmark
 
