@@ -8,6 +8,9 @@ version = "0.1.0"
 description = "Solver toolkit for 10 computational tasks with optional native C++ backends"
 requires-python = ">=3.10"
 readme = "README.md"
+dependencies = [
+    "numpy"
+]
 
 [tool.setuptools]
 
