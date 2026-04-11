@@ -25,21 +25,21 @@ def solve(graph: dict[str, list[str]] , iterations: int = 16, damping: float = 0
         return {"node_count": 0, "top_node": "", "top_score": 0.0, "checksum": 0.0}
 
     nodes = sorted(graph)
+    N = len(nodes)
     idx_map = {node: i for i, node in enumerate(nodes)}
 
-    rows = [idx_map[src] for src, targets in graph.items() for _ in targets]
-    cols = [idx_map[tgt] for _, targets in graph.items() for tgt in targets]
+    rows = np.array([idx_map[src] for src, targets in graph.items() for _ in targets], dtype=np.int64)
+    cols = np.array([idx_map[tgt] for _, targets in graph.items() for tgt in targets], dtype=np.int64)
+    out_degree = np.bincount(rows, minlength=N).astype(np.float64)
 
-    N = len(nodes)
-    adj = np.zeros((N, N), dtype = np.float128)
-    adj[rows, cols] = 1
-    rank = np.full((N,), 1.0/N, dtype=np.float128)
-    degree = np.sum(adj, axis=1)
-    transition_matrix = adj / degree[:, np.newaxis]
+    rank = np.full((N,), 1.0/N, dtype=np.float64)
+    base = (1.0 - damping) / N
+    trans_wt = damping / out_degree
 
     for _ in range(iterations):
-        new_rank = (damping*np.matmul(transition_matrix.T, rank)) + (1.0-damping)/N
-        rank = new_rank
+        msgs = (rank * trans_wt)[rows]
+        recieved = np.bincount(cols, weights=msgs, minlength=N)
+        rank = recieved + base
 
     top_node = int(np.argmax(rank))
     mult = np.arange(1, N+1)
